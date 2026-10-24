@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nishant Sinha – MERN Stack Developer in the making</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6fb;--ink:#0d1226;--muted:#59647e;--line:rgba(13,18,38,.12);--glass:rgba(255,255,255,.7);--a:#6d5efc;--b:#19c3e6;--c:#ffc233}
+:root[data-theme="dark"]{--bg:#070a16;--ink:#eef1fb;--muted:#9aa5c4;--line:rgba(255,255,255,.1);--glass:rgba(255,255,255,.05)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.6;font-size:17px;overflow-x:hidden;transition:background .4s}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--c);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+/* animated background */
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.bg i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;animation:drift 18s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:46vw;height:46vw;background:var(--a);top:-12vw;left:-10vw}
+.bg i:nth-child(2){width:38vw;height:38vw;background:var(--b);bottom:-12vw;right:-8vw;animation-duration:22s}
+.bg i:nth-child(3){width:26vw;height:26vw;background:var(--c);top:40%;left:55%;opacity:.18;animation-duration:26s}
+:root:not([data-theme="dark"]) .bg i{opacity:.28}
+@keyframes drift{to{transform:translate(8vw,6vw) scale(1.15)}}
+#glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(109,94,252,.22),transparent 65%);transform:translate(-50%,-50%);left:-999px;top:-999px}
+/* nav */
+header.top{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--glass);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+header.top b{font-weight:800;font-size:1.1rem}
+nav{display:flex;align-items:center;gap:22px}
+nav a{text-decoration:none;color:var(--muted);font-size:.95rem;position:relative;transition:color .2s}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:linear-gradient(90deg,var(--a),var(--b));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav a:hover{color:var(--ink)}nav a:hover::after{transform:scaleX(1)}
+#theme{background:var(--glass);border:1px solid var(--line);color:var(--ink);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem;transition:transform .4s}
+#theme:hover{transform:rotate(30deg)}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--c));z-index:20}
+/* hero */
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:60px 0}
+.hello{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--glass);border-radius:99px;padding:6px 16px;width:max-content;font-size:.92rem;color:var(--muted)}
+.hello::before{content:"";width:9px;height:9px;border-radius:50%;background:#35d07f;box-shadow:0 0 0 0 rgba(53,208,127,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(53,208,127,0)}100%{box-shadow:0 0 0 0 rgba(53,208,127,0)}}
+.hero h1{font-size:clamp(3.2rem,11vw,8rem);line-height:.95;font-weight:800;letter-spacing:-.035em;margin-top:26px}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(60px) rotate(4deg);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards}
+.grad{background:linear-gradient(100deg,var(--a),var(--b),var(--c),var(--a));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 6s linear infinite}
+@keyframes flow{to{background-position:300% 0}}
+@keyframes rise{to{opacity:1;transform:none}}
+.role{margin-top:24px;font-size:clamp(1.2rem,3vw,1.7rem);font-weight:600}
+.role em{font-style:normal;color:var(--b)}
+.caret{display:inline-block;width:3px;height:1.1em;background:var(--c);margin-left:4px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{max-width:34em;margin-top:16px;color:var(--muted);font-size:1.15rem}
+.cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:12px 24px;border-radius:99px;border:1px solid var(--line);background:var(--glass);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn.primary{background:linear-gradient(100deg,var(--a),var(--b));color:#fff;border:0;box-shadow:0 10px 30px -10px var(--a)}
+.btn.primary:hover{box-shadow:0 16px 36px -8px var(--a)}
+/* marquee */
+.marquee{overflow:hidden;border-block:1px solid var(--line);background:var(--glass);padding:16px 0;position:relative;z-index:1;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.track{display:flex;gap:48px;width:max-content;animation:scroll 28s linear infinite;font-size:1.4rem;font-weight:800;color:var(--muted)}
+.track span::after{content:"✦";margin-left:48px;color:var(--c)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+/* sections */
+section{padding:90px 0}
+h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.025em}
+.sub{color:var(--muted);margin:8px 0 34px;max-width:36em}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+/* stack tiles */
+.stack{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{--t:var(--a);background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:24px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;backdrop-filter:blur(10px);transition:transform .3s,border-color .3s,box-shadow .3s;transform-style:preserve-3d}
+.tile:hover{border-color:var(--t);box-shadow:0 20px 50px -20px var(--t)}
+.tile .l{font-size:4rem;font-weight:800;line-height:1;color:var(--t);animation:float 5s ease-in-out infinite}
+.tile:nth-child(1){--t:#35d07f}.tile:nth-child(2){--t:#c9d3f5}.tile:nth-child(3){--t:#19c3e6}.tile:nth-child(4){--t:#8cc63f}
+.tile:nth-child(2) .l{animation-delay:-1.2s}.tile:nth-child(3) .l{animation-delay:-2.4s}.tile:nth-child(4) .l{animation-delay:-3.6s}
+@keyframes float{50%{transform:translateY(-10px)}}
+.tile strong{display:block;font-size:1.1rem}
+.tile span{color:var(--muted);font-size:.92rem}
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.proj{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:12px;backdrop-filter:blur(10px);transition:transform .3s,box-shadow .3s;overflow:hidden}
+.proj::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--x,50%) var(--y,0%),rgba(109,94,252,.22),transparent 45%);opacity:0;transition:opacity .3s}
+.proj:hover{transform:translateY(-6px);box-shadow:0 24px 50px -24px var(--a)}
+.proj:hover::before{opacity:1}
+.proj>*{position:relative}
+.proj h3{font-size:1.4rem;font-weight:600}
+.proj p{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0}
+.tags li{list-style:none;font-size:.8rem;border:1px solid var(--line);border-radius:99px;padding:2px 12px}
+.links{display:flex;gap:10px;margin-top:auto;padding-top:6px}
+.links .btn{padding:8px 18px;font-size:.9rem}
+.empty{border:2px dashed var(--line);border-radius:20px;padding:40px;text-align:center;color:var(--muted);grid-column:1/-1}
+.empty b{display:block;color:var(--ink);font-size:1.3rem;margin-bottom:6px}
+.empty .spin{display:inline-block;font-size:2rem;animation:spin 6s linear infinite;margin-bottom:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+code{background:var(--glass);border:1px solid var(--line);border-radius:6px;padding:1px 8px}
+/* about */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.about p+p{margin-top:14px}
+.skills{display:flex;flex-wrap:wrap;gap:10px;padding:0}
+.skills li{list-style:none;background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:8px 16px;transition:transform .25s}
+.skills li:hover{transform:translateY(-4px) rotate(-2deg)}
+.skills li.now{border-color:var(--c);box-shadow:0 0 22px -8px var(--c)}
+/* contact */
+.contact{text-align:center}
+.contact a.big{display:inline-block;font-size:clamp(1.4rem,5vw,3rem);font-weight:800;text-decoration:none;background:linear-gradient(100deg,var(--a),var(--b),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent;transition:transform .3s}
+.contact a.big:hover{transform:scale(1.04)}
+.contact .cta{justify-content:center}
+.contact .sub{margin-inline:auto}
+footer{padding:28px 0 40px;color:var(--muted);font-size:.9rem;text-align:center;border-top:1px solid var(--line);position:relative;z-index:1}
+@media(max-width:760px){.stack{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}nav{gap:14px}nav a{font-size:.88rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal,.hero h1 span{opacity:1;transform:none}.caret{display:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="bar"></div>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+<div id="glow" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap">
+    <b>NS<span class="grad">.</span></b>
+    <nav aria-label="Main">
+      <a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
+      <button id="theme" aria-label="Switch light or dark theme">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <div class="hello">Learning in public, building every day</div>
+      <h1 aria-label="Nishant Sinha"><span style="animation-delay:.1s">Nishant</span><br><span class="grad" style="animation-delay:.3s">Sinha</span></h1>
+      <p class="role">I'm learning <em id="typed"></em><span class="caret" aria-hidden="true"></span></p>
+      <p class="lead">I'm learning full stack web development with the MERN stack, and every project I build ends up on this page.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track" id="track"></div>
+  </div>
+
+  <div class="wrap">
+    <section id="stack">
+      <h2 class="reveal">The MERN stack</h2>
+      <p class="sub reveal" style="--d:.1s">Four tools that work together to build a complete web app.</p>
+      <div class="stack">
+        <div class="tile reveal" style="--d:.1s"><div class="l">M</div><div><strong>MongoDB</strong><span>Stores the data</span></div></div>
+        <div class="tile reveal" style="--d:.2s"><div class="l">E</div><div><strong>Express</strong><span>Handles requests</span></div></div>
+        <div class="tile reveal" style="--d:.3s"><div class="l">R</div><div><strong>React</strong><span>Builds the interface</span></div></div>
+        <div class="tile reveal" style="--d:.4s"><div class="l">N</div><div><strong>Node.js</strong><span>Runs the server</span></div></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="reveal">Projects</h2>
+      <p class="sub reveal" style="--d:.1s">Everything I've built while learning, newest first.</p>
+      <div class="projects" id="project-list"></div>
+    </section>
+
+    <section id="about">
+      <h2 class="reveal">About</h2>
+      <div class="about" style="margin-top:30px">
+        <div class="reveal">
+          <p>I'm Nishant, a developer learning to build complete web apps, from the database to the browser.</p>
+          <p>I'm working through the MERN stack and publishing each project here as I finish it, so you can see my progress over time.</p>
+        </div>
+        <div class="reveal" style="--d:.15s">
+          <ul class="skills" aria-label="Skills">
+            <li>HTML</li><li>CSS</li><li>JavaScript</li>
+            <li class="now">MongoDB</li><li class="now">Express</li><li class="now">React</li><li class="now">Node.js</li>
+          </ul>
+          <p class="sub" style="margin:16px 0 0;font-size:.9rem">Glowing skills are the ones I'm learning right now.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="reveal">Let's talk</h2>
+      <p class="sub reveal" style="--d:.1s">Want to talk about a project or an opportunity? Send me an email.</p>
+      <a class="big reveal" style="--d:.2s" href="mailto:your.email@example.com">your.email@example.com</a>
+      <div class="cta reveal" style="--d:.3s">
+        <a class="btn" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer>© <span id="yr"></span> Nishant Sinha</footer>
+
+<script>
+/* ADD YOUR PROJECTS HERE. Copy one block, paste it inside the list, and edit it.
+   Leave live or code as "" to hide that button. */
+const projects = [
+  // {
+  //   title: "Project name",
+  //   description: "One or two sentences on what it does and what you learned.",
+  //   tech: ["MongoDB", "Express", "React", "Node.js"],
+  //   live: "https://your-project.com",
+  //   code: "https://github.com/your-username/your-project"
+  // },
+];
+
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* projects */
+const list = $("project-list");
+if (!projects.length) {
+  list.innerHTML = '<div class="empty reveal"><div class="spin">⚙</div><b>My first project is on its way.</b>Open this file, find the <code>projects</code> list in the script, and add your first project there.</div>';
+} else {
+  projects.forEach((p, i) => {
+    const el = document.createElement("article");
+    el.className = "proj reveal"; el.style.setProperty("--d", (i % 3) * 0.1 + "s");
+    const h = document.createElement("h3"); h.textContent = p.title;
+    const d = document.createElement("p"); d.textContent = p.description;
+    const t = document.createElement("ul"); t.className = "tags";
+    (p.tech || []).forEach(x => { const li = document.createElement("li"); li.textContent = x; t.appendChild(li); });
+    const l = document.createElement("div"); l.className = "links";
+    [["live", "View live", "btn primary"], ["code", "View code", "btn"]].forEach(([k, txt, cls]) => {
+      if (!p[k]) return;
+      const a = document.createElement("a"); a.className = cls; a.href = p[k]; a.target = "_blank"; a.rel = "noopener"; a.textContent = txt; l.appendChild(a);
+    });
+    el.append(h, d, t, l);
+    el.addEventListener("pointermove", e => { const r = el.getBoundingClientRect(); el.style.setProperty("--x", e.clientX - r.left + "px"); el.style.setProperty("--y", e.clientY - r.top + "px"); });
+    list.appendChild(el);
+  });
+}
+
+/* scroll reveal */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* typing effect */
+const words = ["MongoDB", "Express", "React", "Node.js", "full stack"];
+const typed = $("typed");
+if (reduce) { typed.textContent = "the MERN stack"; }
+else {
+  let w = 0, c = 0, del = false;
+  (function tick() {
+    const word = words[w];
+    typed.textContent = word.slice(0, c);
+    if (!del && c === word.length) { del = true; setTimeout(tick, 1400); return; }
+    if (del && c === 0) { del = false; w = (w + 1) % words.length; }
+    c += del ? -1 : 1;
+    setTimeout(tick, del ? 45 : 90);
+  })();
+}
+
+/* marquee */
+const items = ["MongoDB", "Express", "React", "Node.js", "JavaScript", "HTML", "CSS", "Git"];
+$("track").innerHTML = [...items, ...items].map(x => "<span>" + x + "</span>").join("");
+
+/* scroll progress + cursor glow */
+addEventListener("scroll", () => { const h = document.documentElement; $("bar").style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + "%"; }, { passive: true });
+if (!reduce) addEventListener("pointermove", e => { const g = $("glow"); g.style.left = e.clientX + "px"; g.style.top = e.clientY + "px"; });
+
+/* theme toggle */
+const root = document.documentElement, tb = $("theme");
+try { const s = localStorage.getItem("theme"); if (s) root.dataset.theme = s; } catch (e) {}
+const sync = () => tb.textContent = root.dataset.theme === "dark" ? "☾" : "☀";
+sync();
+tb.onclick = () => { root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark"; try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {} sync(); };
+
+$("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
